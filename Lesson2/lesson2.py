@@ -24,18 +24,16 @@ assert id(variable2) == id(variable3)
 print(f'2_2:{id(variable2)}, 2_3:{id(variable3)}')
 
 """
-Здесь по заданию должно быть 2 объекта с одинаковыми данныыми и РАЗНЫМИ идентификаторами
+Здесь по заданию должно быть 2 объекта с одинаковыми данными и РАЗНЫМИ идентификаторами
 
 Например:
 variable2 = ['1234']
 variable3 = ['1234']
 assert id(variable2) != id(variable3)
-В данном задании результат должен быть типа: 
 """
 
 
 # 3
-print()
 variable1_1 = int(variable1)
 print(f'3:{id(variable1_1)}')
 variable1_2 = float(variable1)
