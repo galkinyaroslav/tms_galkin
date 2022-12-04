@@ -1,4 +1,4 @@
-def recursive_search(src, value: str, deep: int = 0, parent: str = None):
+def recursive_search(src, value: str, deep: int = -1, parent: str = None):
     if isinstance(src, dict):
         for k, v in src.items():
             recursive_search(v, value, deep=deep + 1, parent=k)
@@ -38,4 +38,4 @@ source_dict = {
     "key4": "Kate"
 }
 
-recursive_search(source_dict, 'Kate')
+recursive_search(source_dict, 'Alex')

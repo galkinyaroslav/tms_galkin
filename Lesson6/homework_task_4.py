@@ -7,12 +7,31 @@
 
 """
 
-def recursive_search(source_dict, lookup_value, deep=-1, parent=None):
-    """ Your code is here """
-    pass
+
+def recursive_search(src, value, deep=-1, parent=None):
+    if isinstance(src, str):
+            if src==value:
+                print(f"{value} is found! Deep={deep}, Parent={parent}")
+                dict1={'val':value, 'parent':parent,'deep':deep}
+                return dict1
+
+    elif isinstance(src, dict):
+        for k, v in src.items():
+            # print(src)
+            res = recursive_search(v, value, deep=deep + 1, parent=k)
+            if res is not None: # Нужно пояснение
+                return res
+    elif isinstance(src, list):
+        for l in src:
+            # print(src)
+            res = recursive_search(l, value, deep=deep, parent=parent)
+            if res is not None:
+                return res
 
 
 """ Source dict """
+
+
 def get_source_dict():
     return {
         "key1": "John",  # deep 0
@@ -40,6 +59,7 @@ def get_source_dict():
             'key8': 'Robert'  # deep 1
         }
     }
+
 
 """ Test """
 source_dict = get_source_dict()
