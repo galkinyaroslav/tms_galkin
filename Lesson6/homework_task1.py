@@ -5,7 +5,7 @@
 
 def recursive_reverse(source_list: list)-> list:
     if not source_list:
-        return source_list
+        return []
     else:
         return [source_list[-1]]+recursive_reverse(source_list[:-1])
 

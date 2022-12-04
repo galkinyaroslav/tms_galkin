@@ -12,16 +12,20 @@
 
 
 def recursive_flat(source_list):
-    """
-    Your code is here
-    """
-    pass
+    if not source_list:
+        return source_list
+    elif isinstance(source_list[0], list):
+       return recursive_flat(source_list[0])+recursive_flat(source_list[1:])
+    else:
+        return source_list[:1]+recursive_flat(source_list[1:])
+
 
 """
 Пример
 """
 source_list_1 = [[1, 2], [3, 4], [5, 6]]
 print(source_list_1)
+print(recursive_flat(source_list_1))
 assert recursive_flat(source_list_1) == [1, 2, 3, 4, 5, 6]
 
 source_list_2 = [1, [2, 3], [4, 5, [6]], [7, 8], 9, 10]
@@ -39,4 +43,3 @@ assert recursive_flat(source_list_3) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 merged = [1, 2, 3] + [3, 4, 5]
 >> [1, 2, 3, 3, 4, 5,]
 """
-
