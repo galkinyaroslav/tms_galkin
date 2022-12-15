@@ -1,15 +1,3 @@
-num = 10  # 1*1*2*3*4*5=120
-
-
-def fact(n: int) -> int:
-    if n == 1:
-        print('last val')
-        return 1
-    print(f'pre val n={n}')
-    n *= fact(n - 1)
-    print(f'post val n={n}')
-    return n
-
-
-result = fact(num)
-print(f'result>>>{result}')
+numbers_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16]
+res=map(lambda x: str(x), numbers_list)
+print(list(res))

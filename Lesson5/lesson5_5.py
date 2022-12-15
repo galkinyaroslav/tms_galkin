@@ -1,41 +1,34 @@
-def recursive_search(src, value: str, deep: int = -1, parent: str = None):
-    if isinstance(src, dict):
-        for k, v in src.items():
-            recursive_search(v, value, deep=deep + 1, parent=k)
-    elif isinstance(src, list):
-        for l in src:
-            recursive_search(l, value, deep=deep, parent=parent)
+def number_filter(str_number: str):
+    polar_cout = 0
+    dot_count = 0
+    digit_count = 0
+    err_count=0
+    for idx, val in enumerate(str_number): # TODO можно еще добавить проверку для экспоненциальных чисел 123E+10
+        # print(val,' >>> ',idx)
+        if val.isdigit():
+            digit_count += 1
+        elif val == '.':
+            dot_count += 1
+        elif (val == '+' or val == '-') and idx == 0:
+            polar_cout += 1
+        else:
+            err_count+=1
+    if err_count==0:
+        number = float(str_number)
+        if dot_count == 0:
+            print(True)
+            if number < 0:
+                print(int(number), ' >>> Вы ввели отрицательное целое число')
+            else:
+                print(int(number), ' >>> Вы ввели положительное целое число')
+        elif dot_count == 1:
+            if number < 0 :
+                print(number, ' >>> Вы ввели отрицательное дробное число')
+            else:
+                print(number, ' >>> Вы ввели положительное дробное число')
     else:
-        if src == value:
-            print(f"{value} is found! Deep={deep}, Parent={parent}")
-            return
+            print(str_number, ' >>> Вы ввели некорректное число')
 
-
-source_dict = {
-    "key1": {
-        "key2": {
-            "key3": [
-                "John",
-                {
-                    "key4": "Bob",
-                    "key5": "Alex",
-                    "key6": {
-                        "key7": [
-                            {
-                                "key7": "Jessica",
-                                "key8": {
-                                    "key9": [
-                                        "Alex"
-                                    ]
-                                }
-                            }
-                        ]
-                    }
-                }
-            ]
-        }
-    },
-    "key4": "Kate"
-}
-
-recursive_search(source_dict, 'Alex')
+while True:
+    num = input('Введите число: ')
+    number_filter(num)

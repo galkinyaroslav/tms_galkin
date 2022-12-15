@@ -10,16 +10,16 @@
 
 def recursive_search(src, value, deep=-1, parent=None):
     if isinstance(src, str):
-            if src==value:
-                print(f"{value} is found! Deep={deep}, Parent={parent}")
-                dict1={'val':value, 'parent':parent,'deep':deep}
-                return dict1
+        if src == value:
+            print(f"{value} is found! Deep={deep}, Parent={parent}")
+            dict1 = {'val': value, 'parent': parent, 'deep': deep}
+            return dict1
 
     elif isinstance(src, dict):
         for k, v in src.items():
             # print(src)
             res = recursive_search(v, value, deep=deep + 1, parent=k)
-            if res is not None: # Нужно пояснение
+            if res is not None:  # Нужно пояснение
                 return res
     elif isinstance(src, list):
         for l in src:
@@ -38,7 +38,7 @@ def get_source_dict():
         'key2': {
             'key3': 'Alex',  # deep 1
             'key4': {
-                'key5': ['Kate', 'Mary'],  # deep 2
+                'key5': ['Kate', 'Mary', 'Mark'],  # deep 2
                 'key6': {
                     'key7': [
                         'Bob',  # deep 3
@@ -48,7 +48,7 @@ def get_source_dict():
                                 'key9': [  # deep 5
                                     'Lisa',
                                     {
-                                        'key10': ['Mark']  # deep 6
+                                        'key10': ['Mark', 'Alex']  # deep 6
                                     }
                                 ]
                             }

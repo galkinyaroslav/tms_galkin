@@ -1,16 +1,19 @@
 from datetime import datetime
-import time
+# from collections.abc import Callable
+
+def decorator_function(func):
+    time = datetime.now().microsecond
+    func()
+    time2 = datetime.now().microsecond
+    print('execution time: ', func, time2 - time)
+
+@decorator_function
+def func1():
+    list1=0*[100]
 
 
-def datetime_1s():
-    print('Waiting...')
-    time.sleep(1)
-    return datetime.strftime(datetime.now(), '%Y-%m-%d %H:%M:%S')
-
-
-n = input('Input number of elements>> ')
-while not n.isdigit():
-    n = input('Try again. Input number of elements>> ')
-list_of_dates = [datetime_1s() for _ in range(int(n))]
-
-print(list_of_dates)
+@decorator_function
+def func2():
+    list=[]
+    for i in range(100):
+        list.insert(0,i)
